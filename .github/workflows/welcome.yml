@@ -1,0 +1,16 @@
+name: Post welcome comment
+on: 
+  pull_request:
+    types: [opened]
+permissions:
+  pull-requests: write
+jobs:
+  welcome:
+    name: Post welcome comment
+    runs-on: ununtu-latest
+    steps:
+      - run: gh pr comment "PR_URL" --body "welcome to the repository"
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: https://github.com/shivakumar-186/CodingAssignments/pulls
+
